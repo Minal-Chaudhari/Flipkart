@@ -1,41 +1,80 @@
 package com.flipkart.pages.loginPage;
 
 import com.flipkart.util.Constants;
+import com.flipkart.util.WaitUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class LoginPage {
 
-    private WebDriver driver; // Use a local driver for this class
+    //local driver
+    private WebDriver driver;
+    private WaitUtils waitUtils;
 
+    //assign driver to call from test class
     public LoginPage(WebDriver driver) {
-        this.driver = driver; // Assign the driver to this class
+        this.driver = driver;
+        this.waitUtils = new WaitUtils(driver);
+
     }
 
-    // Method to open the Flipkart website
-    public String openFlipkart() {
-        String actualTitle = driver.getTitle();
-        return actualTitle;
+    //common methods
+    //checks if link id clickable
+
+    //get and check the url linked with hyperlink (actual and expected)
+    public boolean checkHyperlink(By linkLocator, String expectedUrl) {
+        try {
+
+            waitUtils.waitForElementToBeVisible(linkLocator,10);
+            WebElement link = driver.findElement(linkLocator);
+
+            //get attribute will fetch "href(link)"
+            String actualUrl = link.getAttribute("href");
+            System.out.println("Fetched URL: " + actualUrl);
+
+            assert actualUrl != null;
+            return actualUrl.equals(expectedUrl);
+
+        } catch (NoSuchElementException e) {
+            System.out.println("Element not found: " + linkLocator);
+            return false;
+        }
     }
 
+
+    //gets title of page
     public String getTitle() {
         return driver.getTitle();
     }
 
-    // Method to click on the login button
-    public void clickLoginButton() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Adjust the timeout as needed
-        WebElement loginBtn = wait.until(ExpectedConditions.elementToBeClickable(LoginPageLocators.loginButton));
-        loginBtn.click();
+    //checks if any button is displayed
+    public boolean isButtonDisplayed(By buttonXpath) {
+        WebElement button = driver.findElement(buttonXpath);
+        return button.isDisplayed();
     }
 
-    // Method to click on enter mobile number field and add valid data
-    public void addValidMobileNumber() {
-        WebElement addMobile = driver.findElement(LoginPageLocators.enterEmailOrMobile);
-        addMobile.sendKeys(Constants.validMobileNumber);
+    //click button
+    public void clickButton(By locator) {
+        driver.findElement(locator).click();
     }
+
+    //testcase specific methods
+    //method will add mobile number
+    public void addMobileNumber(String mobileNumber) {
+        WebElement addMobile = driver.findElement(LoginPageLocators.enterEmailOrMobile);
+        addMobile.sendKeys(mobileNumber);
+    }
+
+    //method will add emailID
+    public void addEmailID(String emailID){
+        WebElement addEmail = driver.findElement(LoginPageLocators.enterEmailOrMobile);
+        addEmail.sendKeys(emailID);
+    }
+
+
+
 }
