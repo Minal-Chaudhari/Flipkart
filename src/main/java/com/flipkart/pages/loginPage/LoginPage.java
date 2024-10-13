@@ -1,13 +1,10 @@
 package com.flipkart.pages.loginPage;
 
-import com.flipkart.util.Constants;
 import com.flipkart.util.WaitUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
-import java.time.Duration;
+import java.util.Set;
+
 
 public class LoginPage {
 
@@ -22,8 +19,7 @@ public class LoginPage {
 
     }
 
-    //common methods
-    //checks if link id clickable
+    //=====================================common methods============================================
 
     //get and check the url linked with hyperlink (actual and expected)
     public boolean checkHyperlink(By linkLocator, String expectedUrl) {
@@ -36,6 +32,7 @@ public class LoginPage {
             String actualUrl = link.getAttribute("href");
             System.out.println("Fetched URL: " + actualUrl);
 
+            //checking if actual url is fetched
             assert actualUrl != null;
             return actualUrl.equals(expectedUrl);
 
@@ -45,6 +42,16 @@ public class LoginPage {
         }
     }
 
+    //waits until locator is visible
+    public void waitUntilFieldIsVisible(By locator){
+        waitUtils.waitForElementToBeVisible(locator,10);
+    }
+
+    //gets text
+    public String getText(By locator){
+        WebElement element = driver.findElement(locator);
+        return element.getText();
+    }
 
     //gets title of page
     public String getTitle() {
@@ -62,18 +69,57 @@ public class LoginPage {
         driver.findElement(locator).click();
     }
 
-    //testcase specific methods
-    //method will add mobile number
-    public void addMobileNumber(String mobileNumber) {
-        WebElement addMobile = driver.findElement(LoginPageLocators.enterEmailOrMobile);
-        addMobile.sendKeys(mobileNumber);
+    //method will switch to new open tab and get nits title
+    public String switchToNewTabAndGetTitle(By textToWaitBeforeTitleFetch) {
+
+        //current window
+        String mainWindowHandle = driver.getWindowHandle();
+        //all windows
+        Set<String> allWindowHandles = driver.getWindowHandles();
+
+        //switching to the new tab opened by user
+        for (String windowHandle : allWindowHandles) {
+            if (!windowHandle.equals(mainWindowHandle)) {
+                driver.switchTo().window(windowHandle); //here new tab is switched
+                break;
+            }
+        }
+        waitUtils.waitForElementToBeVisible(textToWaitBeforeTitleFetch,10);
+        return getTitle(); //using the same method from this class
     }
 
-    //method will add emailID
-    public void addEmailID(String emailID){
-        WebElement addEmail = driver.findElement(LoginPageLocators.enterEmailOrMobile);
-        addEmail.sendKeys(emailID);
+    //this method will switch bask to main flipkart tab
+    public void switchBackToMainTab() {
+        driver.close();
+        driver.switchTo().window(driver.getWindowHandles().iterator().next());
     }
+
+    //locate element and insert value
+    public void insertValue(String value){
+        driver.switchTo().activeElement().sendKeys(value);
+    }
+
+    //get popup test
+    public String getPopUpText(By locator) {
+        String popUpText = null;
+        waitUtils.waitForElementToBeVisible(locator, 10);
+
+        try {
+            WebElement popUp = driver.findElement(locator);
+            popUpText = popUp.getText();
+        } catch (NoSuchElementException e) {
+            System.out.println("Popup element not found: " + e.getMessage());
+        } catch (StaleElementReferenceException e) {
+            System.out.println("Popup element is stale: " + e.getMessage());
+        }
+
+        return popUpText;
+    }
+
+
+    //=======================testcase specific methods================================
+
+    //testcase specific methods
 
 
 

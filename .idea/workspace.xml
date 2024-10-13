@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e7191d6-d6ae-48fa-be6b-e7c67656efdb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="eede6f8b-b092-4461-b6e2-1d9266dfdd84" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loginTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/base/BaseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/base/BaseClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/pages/loginPage/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/pages/loginPage/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/pages/loginPage/LoginPageLocators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/pages/loginPage/LoginPageLocators.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/util/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/util/WaitUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/util/WaitUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/flipkart/tests/LoginPageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/flipkart/tests/LoginPageTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,72 +18,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExportTestResults" outputFolder="$PROJECT_DIR$" openResultsInEditor="true" userTempatePath="" />
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="package-info" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Minal-Chaudhari&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Minal-Chaudhari/Flipkart&quot;,
-    &quot;accountId&quot;: &quot;fa37672d-9fb7-4c63-b67f-514a1c7c3294&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2n6cnLgTDJgW3Ha51LDhQwo3E6Y" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-    <option name="sortKey" value="BY_TIME_DESCENDING" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TestNG.C:/Intellij Projects/Flipkart/loginTests.xml.executor": "Run",
     "TestNG.C:/Intellij Projects/Flipkart/testSuites/loginTests.xml.executor": "Run",
-    "TestNG.C:/Intellij Projects/Flipkart/testng.xml.executor": "Run",
-    "TestNG.LoginPageTests.executor": "Run",
-    "TestNG.LoginPageTests.verifyLoginButton.executor": "Run",
-    "TestNG.LoginPageTests.verifyTermsLinkIsClickable.executor": "Run",
-    "git-widget-placeholder": "minal__code",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Intellij Projects/Flipkart/src/test/java",
-    "onboarding.tips.debug.path": "C:/Intellij Projects/Flipkart/src/main/java/com/flipkart/automation/Main.java",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+    "git-widget-placeholder": "minal__code"
   }
 }]]></component>
-  <component name="RunManager" selected="TestNG.C:/Intellij Projects/Flipkart/testSuites/loginTests.xml">
-    <configuration name="C:/Intellij Projects/Flipkart/loginTests.xml" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="flipkart-testing" />
-      <option name="SUITE_NAME" value="$PROJECT_DIR$/loginTests.xml" />
-      <option name="TEST_OBJECT" value="SUITE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="C:/Intellij Projects/Flipkart/testSuites/loginTests.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="flipkart-testing" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/testSuites/loginTests.xml" />
@@ -96,71 +38,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="C:/Intellij Projects/Flipkart/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="flipkart-testing" />
-      <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
-      <option name="TEST_OBJECT" value="SUITE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginPageTests.verifyLoginButton" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="flipkart-testing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.flipkart.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.flipkart.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.flipkart.tests.LoginPageTests" />
-      <option name="METHOD_NAME" value="verifyLoginButton" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginPageTests.verifyTermsLinkIsClickable" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="flipkart-testing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.flipkart.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.flipkart.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.flipkart.tests.LoginPageTests" />
-      <option name="METHOD_NAME" value="verifyTermsLinkIsClickable" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.C:/Intellij Projects/Flipkart/testSuites/loginTests.xml" />
-        <item itemvalue="TestNG.LoginPageTests.verifyTermsLinkIsClickable" />
-        <item itemvalue="TestNG.C:/Intellij Projects/Flipkart/loginTests.xml" />
-        <item itemvalue="TestNG.LoginPageTests.verifyLoginButton" />
-        <item itemvalue="TestNG.C:/Intellij Projects/Flipkart/testng.xml" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="7e7191d6-d6ae-48fa-be6b-e7c67656efdb" name="Changes" comment="" />
-      <created>1728297133383</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1728297133383</updated>
-    </task>
     <servers />
   </component>
 </project>

@@ -14,11 +14,12 @@ public class Constants {
     public static final String expectedTermsUrl = "https://www.flipkart.com/pages/terms";
     public static final String expectedPrivacyUrl = "https://www.flipkart.com/pages/privacypolicy";
     public static final String expectedCreateAccountUrl = "https://www.flipkart.com/account/login?signup=true";
-    public static final String termsPageTitle = "Terms Store Online - Buy Terms Online at Best Price in India | Flipkart.com";
-    public static final String privacyPageTitle = "Privacypolicy Store Online - Buy Privacypolicy Online at Best Price in India | Flipkart.com";
-    public static final String createAccountPageLoginText = "";
-    public static final String createAccountPageText = "";
-
+    public static final String termsPageTitle = "Terms Store Online";
+    public static final String privacyPageTitle = "Privacypolicy Store Online";
+    public static final String createAccountPageLoginText = "Looks like you're new here!";
+    public static final String createAccountPageText = "Sign up with your mobile number to get started";
+    public static final String invalidMobileNumberError = "Please enter valid Email ID/Mobile number";
+    public static final String invalidEmailIDAlertText = "You are not registered with us. Please sign up.";
 
     //test data for search bar
 
