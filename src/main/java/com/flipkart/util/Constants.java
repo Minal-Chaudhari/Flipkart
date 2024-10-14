@@ -4,6 +4,7 @@ public class Constants {
 
     //website data
     public static final String FLIPKART_URL = "https://www.flipkart.com/";
+    public static final String flipkartLoginURL = "https://www.flipkart.com/account/login?ret=/";
     public static final String validMobileNumber = "9028749325";
     public static final String validEmail = "chaudhariminal18@gmail.com";
 
