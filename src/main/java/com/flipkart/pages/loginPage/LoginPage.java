@@ -16,7 +16,6 @@ public class LoginPage {
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         this.waitUtils = new WaitUtils(driver);
-
     }
 
     //=====================================common methods============================================
@@ -40,6 +39,11 @@ public class LoginPage {
             System.out.println("Element not found: " + linkLocator);
             return false;
         }
+    }
+
+    //navigate to URL
+    public void navigateToURL(String URL){
+        driver.get(URL);
     }
 
     //waits until locator is visible
