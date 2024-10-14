@@ -15,7 +15,7 @@ public class WaitUtils {
         this.driver = driver;
     }
 
-    //method to wait until the element is visible (Implicit wait)
+    //method to wait until the element is visible (explicit wait)
     public void waitForElementToBeVisible(By locator, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));

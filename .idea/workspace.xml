@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eede6f8b-b092-4461-b6e2-1d9266dfdd84" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/pages/loginPage/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/pages/loginPage/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/pages/loginPage/LoginPageLocators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/pages/loginPage/LoginPageLocators.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/util/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/util/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/flipkart/util/WaitUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flipkart/util/WaitUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/flipkart/tests/LoginPageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/flipkart/tests/LoginPageTests.java" afterDir="false" />
     </list>
@@ -18,13 +15,47 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Minal-Chaudhari"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Minal-Chaudhari/Flipkart",
+    "accountId": "fa37672d-9fb7-4c63-b67f-514a1c7c3294"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2nPrkWexaNwG4BEcqtBhgMOyH7Z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="sortKey" value="BY_TIME_DESCENDING" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "TestNG.C:/Intellij Projects/Flipkart/testSuites/loginTests.xml.executor": "Run",
-    "git-widget-placeholder": "minal__code"
+    "git-widget-placeholder": "minal__code",
+    "kotlin-language-version-configured": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -44,7 +75,15 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eede6f8b-b092-4461-b6e2-1d9266dfdd84" name="Changes" comment="" />
+      <created>1728885697224</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728885697224</updated>
+    </task>
     <servers />
   </component>
 </project>

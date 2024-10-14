@@ -99,7 +99,6 @@ public class LoginPageTests extends BaseClass {
         Assert.assertEquals(actualValue,expectedValue,"Error message displayed is NOT correct");
     }
 
-    //NOT COMPLETED
     @Test(priority = 6,description = "LGN_009: Validate error message for invalid email ID input")
     public void enterInvalidEmailID() {
 
