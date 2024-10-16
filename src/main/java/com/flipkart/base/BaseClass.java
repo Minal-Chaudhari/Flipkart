@@ -40,4 +40,9 @@ public class BaseClass {
         }
     }
 
+    //return driver here
+    public WebDriver getDriver() {
+        return driver;
+    }
+
 }
