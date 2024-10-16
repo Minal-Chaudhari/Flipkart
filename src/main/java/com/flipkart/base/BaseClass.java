@@ -8,8 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import java.util.Objects;
-
 public class BaseClass {
 
     protected WebDriver driver; // encapsulation
@@ -18,15 +16,18 @@ public class BaseClass {
 
     @BeforeClass
     public void setUp() {
+        logger.info("Setting up driver ...");
         System.setProperty("webdriver.chrome.driver", "C:\\Intellij Projects\\Flipkart\\src\\test\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        logger.info("Driver setup complete ...");
         driver.get(Constants.FLIPKART_URL);
 
         //adding assert to check if website is really opened
         String expectedTitle = Constants.flipkartHomePageTitle;
         String actualTitle = driver.getTitle();
         if (!actualTitle.contains(expectedTitle)) {
+            logger.error("Flipkart website is not opened");
             throw new IllegalStateException("Flipkart is not opened, expected title: "
                     + expectedTitle + ", but got: " + actualTitle);
         }
