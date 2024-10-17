@@ -18,6 +18,9 @@ public class LoginPageLocators {
     public static final By invalidMobileNumberError = By.xpath("//span[contains(text(),\"Please enter valid Email ID/Mobile number\")]");
     public static final By invalidEmailIDPopUpText = By.xpath("//div[contains(text(),'You are not registered with us')]");
     //public static final By openTextBoxToEnterValue = By.xpath("//span[contains(text(),'Enter Email/Mobile number')]//parent::label//parent::div//input");
+    public static final By verifyButton = By.xpath("//button[contains(text(),'Verify')]");
+
+
 
 
     //new user page xpaths

@@ -1,6 +1,8 @@
 package com.flipkart.util;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+
 
 import java.util.Set;
 
@@ -8,11 +10,13 @@ public class ActionUtils {
 
     private WebDriver driver;
     private WaitUtils waitUtils;
+    private Actions actions;
 
     //assign driver to call from test class
     public ActionUtils(WebDriver driver) {
         this.driver = driver;
         this.waitUtils = new WaitUtils(driver);
+        this.actions = new Actions(driver);
     }
 
     //=====================================common methods============================================
@@ -115,6 +119,12 @@ public class ActionUtils {
         }
 
         return popUpText;
+    }
+
+    //method will hover over element
+    public void hoverOverElement(By locator) {
+        WebElement element = driver.findElement(locator);
+        actions.moveToElement(element).perform();
     }
 
 

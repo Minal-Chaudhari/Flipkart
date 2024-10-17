@@ -1,6 +1,7 @@
 package com.flipkart.tests;
 
 import com.flipkart.base.BaseClass;
+import com.flipkart.pages.homePage.HomePageLocators;
 import com.flipkart.pages.loginPage.LoginPage;
 import com.flipkart.pages.loginPage.LoginPageLocators;
 import com.flipkart.util.ActionUtils;
@@ -13,6 +14,7 @@ import org.testng.annotations.Test;
 public class LoginPageTests extends BaseClass {
 
     ActionUtils action;
+    LoginPage login;
 
     @BeforeClass
     public void initializeLoginPage() {
@@ -21,6 +23,7 @@ public class LoginPageTests extends BaseClass {
             setUp();
         }
         action = new ActionUtils(driver);
+        login = new LoginPage(driver);
         System.out.println("driver setup complete");
     }
 
@@ -107,7 +110,7 @@ public class LoginPageTests extends BaseClass {
         String actualPopUpText;
         actualPopUpText = action.getPopUpText(LoginPageLocators.invalidEmailIDPopUpText);
         System.out.println("Actual fetched value of POP UP text: "+actualPopUpText);
-        String expectedPopUpText = Constants.invalidEmailIDAlertText;
+        String expectedPopUpText = Constants.invalidEmailIDPopUpText;
         Assert.assertEquals(actualPopUpText,expectedPopUpText,"POP UP error message displayed is NOT correct");
     }
 
@@ -130,8 +133,9 @@ public class LoginPageTests extends BaseClass {
 
     }
 
-    @Test
-    public void verifyValidLogin(){
+    //TO BE TESTED
+    @Test(priority = 7,description = "LGN_013: Validate valid email login")
+    public void verifyValidEmailLogin() throws InterruptedException {
         /*
         open url
         click on login button
@@ -140,6 +144,44 @@ public class LoginPageTests extends BaseClass {
         get otp from mail
         click on verify
          */
+        action.navigateToURL(Constants.flipkartLoginURL);
+        action.insertValue(Constants.validEmail);
+        action.clickButton(LoginPageLocators.requestOTPButton);
+        Thread.sleep(20000);
+        /*
+        String fetchedOTP = login.fetchOtpFromEmail();
+        System.out.println(fetchedOTP);
+        Assert.assertNotNull(fetchedOTP);
+         */
+        action.clickButton(LoginPageLocators.verifyButton);
+        boolean buttonIsPresent = action.isButtonDisplayed(HomePageLocators.verifyButton);
+        Assert.assertTrue(buttonIsPresent,"Login is successful");
+    }
+
+
+    @Test(priority = 7,description = "LGN_018: Validate valid mobile number login")
+    public void verifyValidMobileNoLogin() throws InterruptedException {
+        /*
+        open url
+        click on login button
+        enter valid mobile no
+        click on request otp
+        add otp
+        click on verify
+         */
+        action.navigateToURL(Constants.flipkartLoginURL);
+        action.insertValue(Constants.validMobileNumber);
+        action.clickButton(LoginPageLocators.requestOTPButton);
+        Thread.sleep(20000);
+        /*
+        String fetchedOTP = login.fetchOtpFromEmail();
+        System.out.println(fetchedOTP);
+        Assert.assertNotNull(fetchedOTP);
+         */
+        //action.clickButton(LoginPageLocators.verifyButton);
+        action.hoverOverElement(HomePageLocators.accountButton);
+        boolean buttonIsPresent = action.isButtonDisplayed(HomePageLocators.verifyButton);
+        Assert.assertTrue(buttonIsPresent,"Login is successful");
     }
 
     }
