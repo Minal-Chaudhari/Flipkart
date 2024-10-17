@@ -6,7 +6,9 @@ public class Constants {
     public static final String FLIPKART_URL = "https://www.flipkart.com/";
     public static final String flipkartLoginURL = "https://www.flipkart.com/account/login?ret=/";
     public static final String validMobileNumber = "9028749325";
-    public static final String validEmail = "chaudhariminal18@gmail.com";
+    public static final String validEmail = "chaudhariminal09@gmail.com";
+    public static final String emailPassword = "MinalVedant@18";
+    //public static final String emailPassword = "2791606613";
 
     //test data for login page
     public static final String flipkartHomePageTitle = "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!";
@@ -20,7 +22,7 @@ public class Constants {
     public static final String createAccountPageLoginText = "Looks like you're new here!";
     public static final String createAccountPageText = "Sign up with your mobile number to get started";
     public static final String invalidMobileNumberError = "Please enter valid Email ID/Mobile number";
-    public static final String invalidEmailIDAlertText = "You are not registered with us. Please sign up.";
+    public static final String invalidEmailIDPopUpText = "You are not registered with us. Please sign up.";
 
     //test data for search bar
 

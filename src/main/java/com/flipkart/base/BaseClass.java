@@ -33,12 +33,14 @@ public class BaseClass {
         }
     }
 
+
     @AfterClass
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
     }
+
 
     //return driver here
     public WebDriver getDriver() {
