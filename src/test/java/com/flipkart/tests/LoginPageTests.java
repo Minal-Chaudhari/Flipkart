@@ -154,7 +154,7 @@ public class LoginPageTests extends BaseClass {
         Assert.assertNotNull(fetchedOTP);
          */
         action.clickButton(LoginPageLocators.verifyButton);
-        boolean buttonIsPresent = action.isButtonDisplayed(HomePageLocators.verifyButton);
+        boolean buttonIsPresent = action.isButtonDisplayed(HomePageLocators.logoutButton);
         Assert.assertTrue(buttonIsPresent,"Login is successful");
     }
 
@@ -180,7 +180,7 @@ public class LoginPageTests extends BaseClass {
          */
         //action.clickButton(LoginPageLocators.verifyButton);
         action.hoverOverElement(HomePageLocators.accountButton);
-        boolean buttonIsPresent = action.isButtonDisplayed(HomePageLocators.verifyButton);
+        boolean buttonIsPresent = action.isButtonDisplayed(HomePageLocators.logoutButton);
         Assert.assertTrue(buttonIsPresent,"Login is successful");
     }
 
