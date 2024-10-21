@@ -4,6 +4,11 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 
 public class ActionUtils {
@@ -11,6 +16,7 @@ public class ActionUtils {
     private WebDriver driver;
     private WaitUtils waitUtils;
     private Actions actions;
+    private Properties properties;
 
     //assign driver to call from test class
     public ActionUtils(WebDriver driver) {
@@ -128,5 +134,27 @@ public class ActionUtils {
     }
 
 
+    //INCOMPLETE
+    //method will fetch all the values in a list using locator (return list)
+    public List<String> fetchAllTextValuesUsingLocator(By locator){
+        List<String> allFetchedValues = new ArrayList<>();
+
+        return allFetchedValues;
+    }
+
+    //method to load property file
+    public String getPropertyValue(String key, String fileName) {
+        if (properties == null) {
+            properties = new Properties();
+            try {
+                FileInputStream input = new FileInputStream(System.getProperty("user.dir")+"\\propertyFiles\\"+fileName+".properties");
+                properties.load(input);
+                input.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return properties.getProperty(key);
+    }
 
 }

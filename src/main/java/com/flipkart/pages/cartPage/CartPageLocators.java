@@ -1,4 +1,4 @@
-package com.flipkart.pages.CartPage;
+package com.flipkart.pages.cartPage;
 
 import org.openqa.selenium.By;
 
