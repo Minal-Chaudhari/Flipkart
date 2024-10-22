@@ -1,5 +1,7 @@
 package com.flipkart.util;
 
+import com.flipkart.base.BaseClass;
+import lombok.extern.flogger.Flogger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
@@ -17,6 +19,7 @@ public class ActionUtils {
     private WaitUtils waitUtils;
     private Actions actions;
     private Properties properties;
+    BaseClass bClass = new BaseClass();
 
     //assign driver to call from test class
     public ActionUtils(WebDriver driver) {
@@ -36,6 +39,7 @@ public class ActionUtils {
 
             //get attribute will fetch "href(link)"
             String actualUrl = link.getAttribute("href");
+
             System.out.println("Fetched URL: " + actualUrl);
 
             //checking if actual url is fetched
