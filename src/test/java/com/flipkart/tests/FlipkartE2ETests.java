@@ -8,16 +8,14 @@ import org.testng.annotations.Test;
 
 public class FlipkartE2ETests extends BaseClass {
 
-    ActionUtils action;
     LoginPage login;
 
-    @BeforeClass
+    @BeforeClass (groups = {"sanity","smoke","regression","allTestSuite"})
     public void initializeLoginPage() {
         System.out.println("setting up driver");
         if (driver == null) {
             setUp();
         }
-        action = new ActionUtils(driver);
         login = new LoginPage(driver);
         System.out.println("driver setup complete");
     }
@@ -38,7 +36,7 @@ public class FlipkartE2ETests extends BaseClass {
         click on verify
         verify if upi id is verified
          */
-
+        
 
 
     }

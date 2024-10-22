@@ -28,12 +28,6 @@ public class ExtentReportUtils implements ITestListener {
     String repName;
 
     public void onStart(ITestContext testContext) {
-
-		/*SimpleDateFormat df=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-		Date dt=new Date();
-		String currentdatetimestamp=df.format(dt);
-		*/
-
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());// time stamp
         repName = "Test-Report-" + timeStamp + ".html";
         sparkReporter = new ExtentSparkReporter(".\\reports\\" + repName);// specify location of the report
@@ -47,7 +41,6 @@ public class ExtentReportUtils implements ITestListener {
         extent.setSystemInfo("Application", "Flipkart");
         extent.setSystemInfo("Module", "Admin");
         extent.setSystemInfo("Sub Module", "Customers");
-        //extent.setSystemInfo("User Name", System.getProperty("user.name"));
         extent.setSystemInfo("Environment", "QA");
 
         String os = testContext.getCurrentXmlTest().getParameter("os");
@@ -57,24 +50,24 @@ public class ExtentReportUtils implements ITestListener {
         extent.setSystemInfo("Browser", browser);
 
         List<String> includedGroups = testContext.getCurrentXmlTest().getIncludedGroups();
-        if(!includedGroups.isEmpty()) {
+        if (!includedGroups.isEmpty()) {
             extent.setSystemInfo("Groups", includedGroups.toString());
         }
     }
 
     public void onTestSuccess(ITestResult result) {
-
         test = extent.createTest(result.getTestClass().getName());
         test.assignCategory(result.getMethod().getGroups()); // to display groups in report
-        test.log(Status.PASS,result.getName()+" got successfully executed");
-
+        String description = result.getMethod().getDescription();
+        test.log(Status.PASS, description + " got successfully executed");
     }
 
     public void onTestFailure(ITestResult result) {
         test = extent.createTest(result.getTestClass().getName());
         test.assignCategory(result.getMethod().getGroups());
 
-        test.log(Status.FAIL,result.getName()+" got failed");
+        String description = result.getMethod().getDescription();
+        test.log(Status.FAIL, description + " got failed");
         test.log(Status.INFO, result.getThrowable().getMessage());
 
         try {
@@ -89,15 +82,15 @@ public class ExtentReportUtils implements ITestListener {
     public void onTestSkipped(ITestResult result) {
         test = extent.createTest(result.getTestClass().getName());
         test.assignCategory(result.getMethod().getGroups());
-        test.log(Status.SKIP, result.getName()+" got skipped");
+        String description = result.getMethod().getDescription();
+        test.log(Status.SKIP, description + " got skipped");
         test.log(Status.INFO, result.getThrowable().getMessage());
     }
 
     public void onFinish(ITestContext testContext) {
-
         extent.flush();
 
-        String pathOfExtentReport = System.getProperty("user.dir")+"\\reports\\"+repName;
+        String pathOfExtentReport = System.getProperty("user.dir") + "\\reports\\" + repName;
         File extentReport = new File(pathOfExtentReport);
 
         try {
@@ -105,7 +98,5 @@ public class ExtentReportUtils implements ITestListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
 }
