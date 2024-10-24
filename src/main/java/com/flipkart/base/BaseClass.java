@@ -12,6 +12,7 @@ import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+//0-89import org.apache.logging.log4j.core.Logger;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -51,7 +52,7 @@ public class BaseClass {
         }else {
             logger.info("Flipkart website opened successfully");
         }
-        action = new ActionUtils(driver);
+        action = new ActionUtils(driver, (org.apache.logging.log4j.core.Logger) logger);
     }
 
 

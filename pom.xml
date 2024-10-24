@@ -77,6 +77,14 @@
             <version>2.41.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version> <!-- Latest version compatible with higher JDKs -->
+            <scope>provided</scope>
+        </dependency>
+
+
 
     </dependencies>
     <properties>
@@ -84,5 +92,29 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <!-- keeping this empty to avoid default execution -->
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>sanity-tests</id>
+            <properties>
+                <suiteXmlFile>C:\Intellij Projects\Flipkart\testSuites\sanity.xml</suiteXmlFile>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
