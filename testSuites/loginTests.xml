@@ -7,7 +7,6 @@
     <test name="Flipkart Login Test">
         <classes>
             <class name="com.flipkart.tests.LoginPageTests">
-
                 <methods>
                     <!-- Exclude specific tests -->
                     <exclude name="verifyValidMobileNoLogin"/>

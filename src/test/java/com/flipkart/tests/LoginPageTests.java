@@ -49,6 +49,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test Start: LGN_006: Validate terms of use link is clickable");
         action.navigateToURL(Constants.flipkartLoginURL);
         boolean link = action.checkHyperlink(LoginPageLocators.termsOfUseLink,Constants.expectedTermsUrl);
+        logger.info("Expected URL: {}",Constants.expectedTermsUrl);
         Assert.assertTrue(link,"Terms of use link is NOT clickable");
         logger.info("Test End: LGN_006: Validate terms of use link is clickable");
     }
@@ -59,6 +60,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test Start: LGN_011: Validate privacy policy link is clickable");
         action.navigateToURL(Constants.flipkartLoginURL);
         boolean link = action.checkHyperlink(LoginPageLocators.privacyPolicyLink,Constants.expectedPrivacyUrl);
+        logger.info("Expected URL: {}",Constants.expectedPrivacyUrl);
         Assert.assertTrue(link,"Privacy Policy link is NOT clickable");
         logger.info("Test End: LGN_011: Validate privacy policy link is clickable");
     }
@@ -69,6 +71,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test Start: LGN_004: Validate 'Create Account' link  is clickable");
         action.navigateToURL(Constants.flipkartLoginURL);
         boolean link = action.checkHyperlink(LoginPageLocators.createAccountLink,Constants.expectedCreateAccountUrl);
+        logger.info("Expected URL: {}",Constants.expectedCreateAccountUrl);
         Assert.assertTrue(link,"'New to Flipkart? Create an account' Link is NOT clickable");
         logger.info("Test End: LGN_004: Validate 'Create Account' link  is clickable");
     }
@@ -117,8 +120,8 @@ public class LoginPageTests extends BaseClass {
         action.clickButton(LoginPageLocators.requestOTPButton);
         String actualValue = action.getText(LoginPageLocators.invalidMobileNumberError);
         logger.info("Actual fetched value of error: {}", actualValue);
-        logger.info("Actual fetched value of error: {}", actualValue);
         String expectedValue = Constants.invalidMobileNumberError;
+        logger.info("Expected Value: {}" ,expectedValue);
         Assert.assertEquals(actualValue,expectedValue,"Error message displayed is NOT correct");
         logger.info("Test End: LGN_008: Validate error message for invalid mobile number input");
     }
@@ -134,11 +137,12 @@ public class LoginPageTests extends BaseClass {
         actualPopUpText = action.getPopUpText(LoginPageLocators.invalidEmailIDPopUpText);
         logger.info("Actual fetched value of POP UP text: {}", actualPopUpText);
         String expectedPopUpText = Constants.invalidEmailIDPopUpText;
+        logger.info("Expected PopUp Text: {}", expectedPopUpText);
         Assert.assertEquals(actualPopUpText,expectedPopUpText,"POP UP error message displayed is NOT correct");
         logger.info("Test End: LGN_009: Validate error message for invalid email ID input");
     }
 
-    //==========new user account testcases priority=4=========================================
+    //==========new user account testcases =========================================
 
     @Test(priority = 3,description = "LGN_005: Verify redirection to 'Create Account' page")
     public void verifyCreateAccountLinkRedirection(){
@@ -172,7 +176,7 @@ public class LoginPageTests extends BaseClass {
          */
         logger.info("Test Start: LGN_013: Validate valid email login");
         action.navigateToURL(Constants.flipkartLoginURL);
-        action.insertValue(Constants.validEmail);
+        action.insertSensitiveValue(Constants.validEmail);
         action.clickButton(LoginPageLocators.requestOTPButton);
         Thread.sleep(20000);
 
@@ -186,6 +190,8 @@ public class LoginPageTests extends BaseClass {
         action.clickButton(LoginPageLocators.verifyButton);
         boolean buttonIsPresent = action.isButtonDisplayed(HomePageLocators.logoutButton);
         Assert.assertTrue(buttonIsPresent,"Login is successful");
+        login.storeCookies();
+        logger.info("Cookies stored successfully");
         logger.info("Test End: LGN_013: Validate valid email login");
     }
 
@@ -202,7 +208,7 @@ public class LoginPageTests extends BaseClass {
          */
         logger.info("Test Start: LGN_018: Validate valid mobile number login");
         action.navigateToURL(Constants.flipkartLoginURL);
-        action.insertValue(Constants.validMobileNumber);
+        action.insertSensitiveValue(Constants.validMobileNumber);
         action.clickButton(LoginPageLocators.requestOTPButton);
         Thread.sleep(20000);
         /*
@@ -214,10 +220,32 @@ public class LoginPageTests extends BaseClass {
         action.hoverOverElement(HomePageLocators.accountButton);
         boolean buttonIsPresent = action.isButtonDisplayed(HomePageLocators.logoutButton);
         Assert.assertTrue(buttonIsPresent,"Login is successful");
+        login.storeCookies();
+        logger.info("Cookies stored successfully");
         logger.info("Test End: LGN_018: Validate valid mobile number login");
 
     }
 
-
-
+    //test will check if the set cookies are working
+    @Test(priority = 2, description = "LGN_014: Validate login using cookies")
+    public void verifyLoginWithCookies() {
+    /*
+    Load cookies
+    Navigate to Flipkart
+    Check if logout button is displayed to verify login
+    */
+        logger.info("Test Start: LGN_019: Validate login using cookies");
+        login.loadCookies();
+        action.navigateToURL(Constants.FLIPKART_URL);
+        action.hoverOverElement(HomePageLocators.accountButton);
+        action.waitUntilFieldIsVisible(HomePageLocators.logoutButton);
+        boolean isLogoutButtonDisplayed = action.isButtonDisplayed(HomePageLocators.logoutButton);
+        Assert.assertTrue(isLogoutButtonDisplayed, "Login is successful using cookies");
+        logger.info("Cookies loaded, and login verified via logout button visibility.");
+        logger.info("Test End: LGN_019: Validate login using cookies");
     }
+
+
+
+
+}
