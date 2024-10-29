@@ -4,15 +4,9 @@
     <listeners>
         <listener class-name="com.flipkart.util.ExtentReportUtils"/>
     </listeners>
-    <test name="Flipkart Login Test">
+    <test name="Flipkart E2E Test">
         <classes>
-            <class name="com.flipkart.LoginPageTests">
-                <methods>
-                    <!-- Exclude specific tests -->
-                    <exclude name="verifyValidMobileNoLogin"/>
-                    <exclude name="verifyValidEmailLogin"/>
-                </methods>
-
+            <class name="com.flipkart.FlipkartE2ETests">
             </class>
         </classes>
     </test>

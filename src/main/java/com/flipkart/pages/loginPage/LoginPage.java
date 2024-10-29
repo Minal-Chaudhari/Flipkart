@@ -1,9 +1,13 @@
 package com.flipkart.pages.loginPage;
 
+import com.flipkart.util.ActionUtils;
 import com.flipkart.util.Constants;
 import com.flipkart.util.EmailUtils;
 import com.flipkart.util.WaitUtils;
+//import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.*;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.Set;
@@ -14,6 +18,7 @@ public class LoginPage {
     //local driver
     private WebDriver driver;
     private WaitUtils waitUtils;
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(LoginPage.class);
 
     //assign driver to call from test class
     public LoginPage(WebDriver driver) {
@@ -37,7 +42,7 @@ public class LoginPage {
         String user = Constants.validEmail; // Your email
         String password = Constants.emailPassword; // Your email password
 
-        // Fetch OTP using EmailUtils (Utility class for fetching OTP from email)
+        //Fetch OTP using EmailUtils (Utility class for fetching OTP from email)
         return EmailUtils.fetchOtpFromEmail(host, storeType, user, password);
     }
 
@@ -54,6 +59,7 @@ public class LoginPage {
                         cookie.getExpiry() + ";" + cookie.isSecure());
                 writer.newLine();
             }
+            logger.info("Cookies stored successfully");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,16 +67,16 @@ public class LoginPage {
 
     //load cookies
     public void loadCookies() {
-        // Specify the file path
+        //file path
         File file = new File(System.getProperty("user.dir")+"\\src\\main\\resources\\cookies.data");
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // Split the line using ";" as a delimiter
+                //split the line using ";" as a delimiter
                 String[] token = line.split(";");
 
-                // Extract each part of the cookie
+                //extracting each part of the cookie
                 String name = token[0];
                 String value = token[1];
                 String domain = token[2];
@@ -78,21 +84,22 @@ public class LoginPage {
                 String expiry = token[4]; // Can be null
                 boolean isSecure = Boolean.parseBoolean(token[5]);
 
-                // Create a new Cookie object
+                //creating a new Cookie object
                 Cookie cookie = new Cookie.Builder(name, value)
                         .domain(domain)
                         .path(path)
                         .isSecure(isSecure)
                         .build();
 
-                // Add cookie to the browser
+                //adding cookie to the browser
                 driver.manage().addCookie(cookie);
             }
+            logger.info("Cookies loaded successfully");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // Refresh the page to apply cookies
+        //refresh the page to apply cookies
         driver.navigate().refresh();
     }
 

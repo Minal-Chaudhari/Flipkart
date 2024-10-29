@@ -12,7 +12,8 @@
             </run>
         </groups>
         <classes>
-            <class name="com.flipkart.tests.LoginPageTests"/>
+            <class name="com.flipkart.LoginPageTests"/>
+            <class name="com.flipkart.FlipkartE2ETests"/>
         </classes>
     </test>
 </suite>

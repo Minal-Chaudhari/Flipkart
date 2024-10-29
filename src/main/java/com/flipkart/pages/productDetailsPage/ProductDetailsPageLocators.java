@@ -6,7 +6,7 @@ public class ProductDetailsPageLocators {
 
     public static final By getProductName = By.xpath("//span[@class='VU-ZEz']"); //need to use getText here
     public static final By getProductPrice = By.xpath("(//div[@class='hl05eU']//child::div)[1]");//use get text
-    public static final By addToCardButton = By.xpath("//button[contains(text(),'Add to cart')]");
+    public static final By addToCartButton = By.xpath("//button[contains(text(),'Add to cart')]");
     /*
     some special xpath
     //button will select all buttons
