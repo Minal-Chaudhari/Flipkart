@@ -1,21 +1,23 @@
-package com.flipkart.pages.productDetailsPage;
+package com.flipkart.pages.homePage;
 
-import com.flipkart.util.ActionUtils;
+import com.flipkart.pages.productDetailsPage.ProductDetailsPage;
 import com.flipkart.util.WaitUtils;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.WebDriver;
 
-public class ProductDetailsPage {
+public class HomePage {
 
     private WebDriver driver;
     private WaitUtils waitUtils;
 
-    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(ProductDetailsPage.class);
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(HomePage.class);
 
     //assign driver to call from test class
-    public ProductDetailsPage(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         this.driver = driver;
         this.waitUtils = new WaitUtils(driver);
     }
+
 
 }

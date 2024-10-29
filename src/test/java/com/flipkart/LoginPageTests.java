@@ -1,10 +1,11 @@
-package com.flipkart.tests;
+package com.flipkart;
 
 import com.flipkart.base.BaseClass;
 import com.flipkart.pages.homePage.HomePageLocators;
 import com.flipkart.pages.loginPage.LoginPage;
 import com.flipkart.pages.loginPage.LoginPageLocators;
 import com.flipkart.util.Constants;
+import org.apache.logging.log4j.core.Logger;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -18,6 +19,7 @@ public class LoginPageTests extends BaseClass {
         if (driver == null) {
             setUp();
         }
+        //login = new LoginPage(driver, logger);
         login = new LoginPage(driver);
         logger.info("Login Page is Initialised");
     }
@@ -87,7 +89,10 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test Start: LGN_007: Verify redirection to 'Terms of Use' page");
         action.navigateToURL(Constants.flipkartLoginURL);
         action.clickButton(LoginPageLocators.termsOfUseLink);
-        String newTabTitle = action.switchToNewTabAndGetTitle(LoginPageLocators.termsOfUseText);
+        action.switchToNewTab();
+        action.waitForPageToLoad();
+        //action.waitUntilFieldIsVisible(LoginPageLocators.termsOfUseText);
+        String newTabTitle = action.getTitle();
         logger.info("New tab fetched title is: {}", newTabTitle);
         Assert.assertTrue(newTabTitle.contains(Constants.termsPageTitle), "New tab is NOT Terms Of Use page.");
         //Thread.sleep(2000);
@@ -101,7 +106,9 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test Start: LGN_012: Verify redirection to 'Privacy Policy' page");
         action.navigateToURL(Constants.flipkartLoginURL);
         action.clickButton(LoginPageLocators.privacyPolicyLink);
-        String newTabTitle = action.switchToNewTabAndGetTitle(LoginPageLocators.privacyPolicyText);
+        action.switchToNewTab();
+        action.waitForPageToLoad();
+        String newTabTitle = action.getTitle();
         logger.info("New tab fetched title is: {}", newTabTitle);
         Assert.assertTrue(newTabTitle.contains(Constants.privacyPageTitle), "New tab is NOT Terms Of Use page.");
         action.switchBackToMainTab();
@@ -191,7 +198,7 @@ public class LoginPageTests extends BaseClass {
         boolean buttonIsPresent = action.isButtonDisplayed(HomePageLocators.logoutButton);
         Assert.assertTrue(buttonIsPresent,"Login is successful");
         login.storeCookies();
-        logger.info("Cookies stored successfully");
+        //logger.info("Cookies stored successfully");
         logger.info("Test End: LGN_013: Validate valid email login");
     }
 
@@ -221,13 +228,13 @@ public class LoginPageTests extends BaseClass {
         boolean buttonIsPresent = action.isButtonDisplayed(HomePageLocators.logoutButton);
         Assert.assertTrue(buttonIsPresent,"Login is successful");
         login.storeCookies();
-        logger.info("Cookies stored successfully");
+        //logger.info("Cookies stored successfully");
         logger.info("Test End: LGN_018: Validate valid mobile number login");
 
     }
 
     //test will check if the set cookies are working
-    @Test(priority = 2, description = "LGN_014: Validate login using cookies")
+    @Test(priority = 4, description = "LGN_014: Validate login using cookies")
     public void verifyLoginWithCookies() {
     /*
     Load cookies

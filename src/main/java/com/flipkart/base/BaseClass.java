@@ -21,14 +21,13 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.apache.commons.io.FileUtils;
+
 import org.testng.annotations.BeforeClass;
 
 public class BaseClass {
 
     protected WebDriver driver; // encapsulation
-    //trying logger here
-    protected Logger logger;
+    public Logger logger;
     protected ActionUtils action;
 
     @BeforeClass(groups = {"sanity","smoke","regression","allTestSuite"})
@@ -52,8 +51,10 @@ public class BaseClass {
         }else {
             logger.info("Flipkart website opened successfully");
         }
-        action = new ActionUtils(driver, (org.apache.logging.log4j.core.Logger) logger);
+        action = new ActionUtils(driver);
     }
+
+
 
 
     @AfterClass(groups = {"sanity","smoke","regression","allTestSuite"})
@@ -64,25 +65,24 @@ public class BaseClass {
         }
     }
 
+
+
+
     //here screenshot method is present
-    public String captureScreen(String testCaseName) throws IOException {
-        if (driver == null) {
-            logger.error("WebDriver is not initialized.");
-            throw new IllegalStateException("WebDriver is not initialized.");
-        }
+    public String captureScreen(String tname) throws IOException {
 
         String timeStamp = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
         File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
-        File screenshotDir = new File(System.getProperty("user.dir") + "\\screenshots\\");
+        String targetFilePath=System.getProperty("user.dir")+"\\screenshots\\" + tname + "_" + timeStamp + ".png";
+        File targetFile=new File(targetFilePath);
 
-        String targetFilePath = screenshotDir + "\\" + testCaseName + "_" + timeStamp + ".png";
-        File targetFile = new File(targetFilePath);
-
-        FileUtils.copyFile(sourceFile, targetFile);
+        sourceFile.renameTo(targetFile);
 
         return targetFilePath;
+
     }
 
     //static block for timestamp

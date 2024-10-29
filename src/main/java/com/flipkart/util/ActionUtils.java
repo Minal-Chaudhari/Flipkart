@@ -1,6 +1,9 @@
 package com.flipkart.util;
 
-import org.apache.logging.log4j.core.Logger;
+import com.flipkart.pages.checkoutPage.CheckOutPage;
+import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
@@ -14,19 +17,20 @@ import java.util.Set;
 
 public class ActionUtils {
 
-    private static final org.slf4j.Logger log = LoggerFactory.getLogger(ActionUtils.class);
+
     private WebDriver driver;
     private WaitUtils waitUtils;
     private Actions actions;
-    private Logger logger;
     private Properties properties;
 
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(ActionUtils.class);
+
     //assign driver to call from test class
-    public ActionUtils(WebDriver driver, Logger logger) {
+    public ActionUtils(WebDriver driver) {
         this.driver = driver;
         this.waitUtils = new WaitUtils(driver);
         this.actions = new Actions(driver);
-        this.logger = logger;
+        //this.logger = logger;
 
     }
 
@@ -64,7 +68,13 @@ public class ActionUtils {
     //waits until locator is visible
     public void waitUntilFieldIsVisible(By locator){
         logger.info("Waiting until Element is visible...");
-        waitUtils.waitForElementToBeVisible(locator,10);
+        waitUtils.waitForElementToBeVisible(locator,20);
+    }
+
+    //waits until locator is clickable
+    public void waitUntilElementIsClickable(By locator){
+        logger.info("Waiting until Element is clickable...");
+        waitUtils.waitForElementToBeClickable(locator,20);
     }
 
     //gets text
@@ -93,8 +103,8 @@ public class ActionUtils {
         driver.findElement(locator).click();
     }
 
-    //method will switch to new open tab and get nits title
-    public String switchToNewTabAndGetTitle(By textToWaitBeforeTitleFetch) {
+    //method will switch to new open tab
+    public void switchToNewTab() {
 
         //current window
         String mainWindowHandle = driver.getWindowHandle();
@@ -110,8 +120,7 @@ public class ActionUtils {
             }
         }
         logger.info("Waiting for element to be visible...");
-        waitUtils.waitForElementToBeVisible(textToWaitBeforeTitleFetch,10);
-        return getTitle(); //using the same method from this class
+        //waitUtils.waitForElementToBeVisible(textToWaitBeforeTitleFetch,10);
     }
 
     //this method will switch bask to main flipkart tab
@@ -159,11 +168,23 @@ public class ActionUtils {
         logger.info("Hovering over element...");
     }
 
-
-    //INCOMPLETE
     //method will fetch all the values in a list using locator (return list)
-    public List<String> fetchAllTextValuesUsingLocator(By locator){
+    public List<String> fetchAllTextValuesUsingLocator(By locator) {
+        /*
+        create list to store webelements (findelementS)
+        create list to store text
+        use for each to add all text from weblement list to text list
+        return text list
+         */
+
+        List<WebElement> elements = driver.findElements(locator);
         List<String> allFetchedValues = new ArrayList<>();
+
+        logger.info("Fetching all text values");
+        for (WebElement element : elements) {
+            allFetchedValues.add(element.getText().trim());
+        }
+
 
         return allFetchedValues;
     }
@@ -185,42 +206,47 @@ public class ActionUtils {
         return properties.getProperty(key);
     }
 
-    //method will store cookies to file
-    public void storeCookies(String fileName) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            Set<Cookie> cookies = driver.manage().getCookies();
-            for (Cookie cookie : cookies) {
-                StringBuilder sb = new StringBuilder();
-                sb.append(cookie.getName()).append(";")
-                        .append(cookie.getValue()).append(";")
-                        .append(cookie.getDomain()).append(";")
-                        .append(cookie.getPath()).append(";")
-                        .append(cookie.getExpiry()).append(";")
-                        .append(cookie.isSecure() ? "true" : "false");
-                writer.write(sb.toString());
-                writer.newLine();
-            }
-            logger.info("Cookies stored to file: {}" , fileName);
-        } catch (IOException e) {
-            logger.info("Error storing cookies: {}" , e.getMessage());
-        }
+    //method will click enter from keyboard ... driver.submit() cab be used
+    public void clickEnter(By locator){
+        WebElement element = driver.findElement(locator);
+        element.sendKeys(Keys.ENTER);
+        logger.info("Enter button is clicked");
     }
 
-    //method will load cookies from file
-    public void loadCookies(String fileName) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] cookieValues = line.split(";");
-                Cookie cookie = new Cookie(cookieValues[0], cookieValues[1], cookieValues[2],
-                        cookieValues[3], cookieValues[4].isEmpty() ? null : new java.util.Date(cookieValues[4]),
-                        Boolean.parseBoolean(cookieValues[5]));
-                driver.manage().addCookie(cookie);
-            }
-            logger.info("Cookies loaded from file: {}" , fileName);
-        } catch (IOException e) {
-            logger.info("Error loading cookies: {}" , e.getMessage());
-        }
+    //method will wait for page to load .. max wait time is 20
+    public void waitForPageToLoad(){
+        waitUtils.waitForPageToLoad(20);
+        logger.info("Waiting for page to load");
     }
+
+    //method to check if radio button is selected
+    public boolean isRadioButtonSelected(By locator){
+        WebElement radioElement = driver.findElement(locator);
+        logger.info("Checking if radio button is selected");
+        return radioElement.isSelected();
+    }
+
+    //method to select radio button
+    public void selectRadioButton(By locator){
+        WebElement radioElement = driver.findElement(locator);
+        if (!radioElement.isSelected()) {
+            radioElement.click();
+        }
+        logger.info("Radio button is selected");
+    }
+
+    //scroll until view
+    public void scrollIntoView(By locator){
+        WebElement element = driver.findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public void clickUsingJS(By locator) {
+        WebElement element = driver.findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element);
+    }
+
 
 }
