@@ -16,6 +16,7 @@ public class SearchResultsPage {
 
     private WebDriver driver;
     private WaitUtils waitUtils;
+    private ActionUtils action;
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(ActionUtils.class);
 
@@ -23,6 +24,7 @@ public class SearchResultsPage {
     public SearchResultsPage(WebDriver driver) {
         this.driver = driver;
         this.waitUtils = new WaitUtils(driver);
+        this.action = new ActionUtils(driver);
     }
 
     //================================ page specific methods ================================
@@ -45,14 +47,23 @@ public class SearchResultsPage {
         return productList.get(x-1); //(x-1) because of indexing since list startes from "0"
     }
 
+    //method will select the product with given brand name
+    public String getProductByBrandName(List<String> productList, String brandName) {
+
+        if (productList.contains(brandName)) {
+            //return the first element in the list
+            return productList.get(0);
+        } else {
+            logger.warn("The product list does not contain the specified brand name.");
+            return null;
+        }
+    }
+
     //method will select product, to be passed: product title/name
     public void selectProdByProductName(String productName) {
         //creating dynamic xpath
-        //String dynamicXPath = "//div[@class='KzDlHZ' and contains(text(),'Lenovo IdeaPad Slim 5 Qualcomm Snapdragon X Plus - (16 GB/1 TB SSD/Windows 11 Home) 14Q8X9 Thin and Li...')]";
-        //String dynamicXPath = SearchResultsPageLocators.selectProdWithProdName +"'"+ productName + "')]";
         String dynamicXPath = SearchResultsPageLocators.prodNameXpath+"'"+productName+"')]";
         logger.info("Dynamic xpath: {}",dynamicXPath);
-        //div[@class='KzDlHZ' and contains(text(),'prod name')]
 
         //locate elements
         List<WebElement> products = driver.findElements(By.xpath(dynamicXPath));
@@ -67,7 +78,16 @@ public class SearchResultsPage {
     }
 
 
+    //method to clear search field if it has some value
+    public void clearSearchFiledIfHasValue() {
 
-
-
+        try {
+            WebElement searchField = driver.findElement(HomePageLocators.searchButton);
+            if (!searchField.getAttribute("value").isEmpty()) {
+                searchField.clear();
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred while clearing the search field: " + e.getMessage());
+        }
+    }
 }
