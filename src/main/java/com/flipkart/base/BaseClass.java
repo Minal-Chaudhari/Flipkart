@@ -56,7 +56,7 @@ public class BaseClass {
 
 
 
-
+/*
     @AfterClass(groups = {"sanity","smoke","regression","allTestSuite"})
     public void tearDown() {
         if (driver != null) {
@@ -64,6 +64,8 @@ public class BaseClass {
             logger.info("Driver tear down complete ...");
         }
     }
+
+ */
 
 
 

@@ -19,7 +19,6 @@ public class LoginPageTests extends BaseClass {
         if (driver == null) {
             setUp();
         }
-        //login = new LoginPage(driver, logger);
         login = new LoginPage(driver);
         logger.info("Login Page is Initialised");
     }
@@ -30,7 +29,6 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test Start: LGN_001: Validate the login button presence");
         Assert.assertTrue(action.isButtonDisplayed(LoginPageLocators.loginButton), "Login button is NOT displayed on the homepage.");
         logger.info("login button is displayed");
-        //click login button
         action.clickButton(LoginPageLocators.loginButton);
         logger.info("Login Button is clicked");
         logger.info("Test End: LGN_001: Validate the login button presence");
@@ -80,12 +78,7 @@ public class LoginPageTests extends BaseClass {
 
     @Test(priority = 3,description = "LGN_007: Verify redirection to 'Terms of Use' page")
     public void verifyTermsRedirection() {
-        /*
-        click button
-        switch to new tab
-        get title
-        verify if title contains terms(fetch from constants)
-         */
+
         logger.info("Test Start: LGN_007: Verify redirection to 'Terms of Use' page");
         action.navigateToURL(Constants.flipkartLoginURL);
         action.clickButton(LoginPageLocators.termsOfUseLink);
@@ -94,6 +87,7 @@ public class LoginPageTests extends BaseClass {
         //action.waitUntilFieldIsVisible(LoginPageLocators.termsOfUseText);
         String newTabTitle = action.getTitle();
         logger.info("New tab fetched title is: {}", newTabTitle);
+        logger.info("New tab expected title is: {}",Constants.termsPageTitle);
         Assert.assertTrue(newTabTitle.contains(Constants.termsPageTitle), "New tab is NOT Terms Of Use page.");
         //Thread.sleep(2000);
         action.switchBackToMainTab();
@@ -110,6 +104,7 @@ public class LoginPageTests extends BaseClass {
         action.waitForPageToLoad();
         String newTabTitle = action.getTitle();
         logger.info("New tab fetched title is: {}", newTabTitle);
+        logger.info("New tab expected title is: {}",Constants.privacyPageTitle);
         Assert.assertTrue(newTabTitle.contains(Constants.privacyPageTitle), "New tab is NOT Terms Of Use page.");
         action.switchBackToMainTab();
         logger.info("Test End: LGN_012: Verify redirection to 'Privacy Policy' page");
@@ -153,11 +148,7 @@ public class LoginPageTests extends BaseClass {
 
     @Test(priority = 3,description = "LGN_005: Verify redirection to 'Create Account' page")
     public void verifyCreateAccountLinkRedirection(){
-        /*
-        click create accoun button
-        wait until enter mobile number xpath is visible
-        if login text viible visible assert true
-         */
+
         logger.info("Test Start: LGN_005: Verify redirection to 'Create Account' page");
         action.navigateToURL(Constants.flipkartLoginURL);
         action.clickButton(LoginPageLocators.createAccountLink);
@@ -173,14 +164,7 @@ public class LoginPageTests extends BaseClass {
 
     @Test(priority = 1,description = "LGN_013: Validate valid email login")
     public void verifyValidEmailLogin() throws InterruptedException {
-        /*
-        open url
-        click on login button
-        enter valid email id
-        click on request otp
-        get otp from mail
-        click on verify
-         */
+
         logger.info("Test Start: LGN_013: Validate valid email login");
         action.navigateToURL(Constants.flipkartLoginURL);
         action.insertSensitiveValue(Constants.validEmail);
@@ -205,14 +189,7 @@ public class LoginPageTests extends BaseClass {
 
     @Test(priority = 1,description = "LGN_018: Validate valid mobile number login")
     public void verifyValidMobileNoLogin() throws InterruptedException {
-        /*
-        open url
-        click on login button
-        enter valid mobile no
-        click on request otp
-        add otp
-        click on verify
-         */
+
         logger.info("Test Start: LGN_018: Validate valid mobile number login");
         action.navigateToURL(Constants.flipkartLoginURL);
         action.insertSensitiveValue(Constants.validMobileNumber);

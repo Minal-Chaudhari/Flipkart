@@ -13,12 +13,10 @@ public class CheckOutPageLocators {
     public static final By enterUPIId = By.xpath("//input[@name = 'upi-id']");
     public static final By verifyButton = By.xpath("//div[contains(text(),'Verify')]");
     public static final By payButton = By.xpath("//button[@type='button']");
-
+    public static final By placeOrderButton = By.xpath("//span[contains(text(),'Place Order')]//parent::button");
     public static final By loggedInUserName = By.xpath("//div[contains(text(),'Login')]//following::div//div//child::span");
     public static final By loggedInUserDeliveryAddress = By.xpath("");
 
-
-    public static final By getProlductName = By.xpath("");
     public static final By BuyNowButto3n = By.xpath("");
     public static final By getPro1ldu1ctName = By.xpath("");
 

@@ -1,6 +1,7 @@
 package com.flipkart.util;
 
 import com.flipkart.pages.checkoutPage.CheckOutPage;
+import com.flipkart.pages.homePage.HomePageLocators;
 import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.core.Logger;
 import org.apache.logging.log4j.Logger;
@@ -246,6 +247,29 @@ public class ActionUtils {
         WebElement element = driver.findElement(locator);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
+    }
+
+    //method will print all items of list
+    public void printListItems(List<String> items) {
+        if (items == null || items.isEmpty()) {
+            logger.warn("The list is empty or null.");
+            return;
+        }
+        for (String item : items) {
+            logger.info(item);
+        }
+    }
+
+    //method will check if button is enabled
+    public boolean isButtonEnabled(By locator){
+     WebElement element = driver.findElement(locator);
+     return element.isEnabled();
+    }
+
+    //method to clear search field
+    public void clearSearchField(){
+        WebElement element = driver.findElement(HomePageLocators.searchButton);
+        element.clear();
     }
 
 

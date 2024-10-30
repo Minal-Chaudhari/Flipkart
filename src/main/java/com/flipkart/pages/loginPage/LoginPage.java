@@ -18,12 +18,15 @@ public class LoginPage {
     //local driver
     private WebDriver driver;
     private WaitUtils waitUtils;
+    private ActionUtils action;
+
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(LoginPage.class);
 
     //assign driver to call from test class
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         this.waitUtils = new WaitUtils(driver);
+        this.action = new ActionUtils(driver);
     }
 
     //=======================testcase specific methods================================

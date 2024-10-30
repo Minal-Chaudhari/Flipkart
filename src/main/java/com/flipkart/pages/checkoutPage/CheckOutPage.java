@@ -1,6 +1,7 @@
 package com.flipkart.pages.checkoutPage;
 
 import com.flipkart.pages.loginPage.LoginPage;
+import com.flipkart.util.ActionUtils;
 import com.flipkart.util.WaitUtils;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,7 @@ public class CheckOutPage {
 
     private WebDriver driver;
     private WaitUtils waitUtils;
+    private ActionUtils action;
 
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(CheckOutPage.class);
 
@@ -18,6 +20,7 @@ public class CheckOutPage {
     public CheckOutPage(WebDriver driver) {
         this.driver = driver;
         this.waitUtils = new WaitUtils(driver);
+        this.action = new ActionUtils(driver);
     }
 
     /*
