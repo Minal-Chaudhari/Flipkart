@@ -12,6 +12,7 @@ public class Constants {
     public static final String validUPIId = "9028749325@ptyes";
     public static final String invalidMobileNumber = "1234567890";
     public static final String invalidEmail = "invalidemail@gmail.com";
+    public static final String pinCode = "421501";
 
     //test data for login page
     public static final String flipkartHomePageTitle = "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!";

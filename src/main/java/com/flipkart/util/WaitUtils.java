@@ -45,4 +45,10 @@ public class WaitUtils {
         );
     }
 
+    //method will wait until the element is present in dom structure
+    public void waitForElementToBePresent(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
 }

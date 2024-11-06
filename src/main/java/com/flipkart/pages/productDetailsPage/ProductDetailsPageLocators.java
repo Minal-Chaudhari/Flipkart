@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public class ProductDetailsPageLocators {
 
-    public static final By getProductName = By.xpath("//span[@class='VU-ZEz']"); //need to use getText here
+    public static final By getProductName = By.xpath("//span[@class=\"VU-ZEz\"]"); //need to use getText here
     public static final By getProductPrice = By.xpath("(//div[@class='hl05eU']//child::div)[1]");//use get text
     public static final By addToCartButton = By.xpath("//button[contains(text(),'Add to cart')]");
     /*
@@ -24,10 +24,11 @@ public class ProductDetailsPageLocators {
     public static final By ratingsAndReview = By.xpath("");
     public static final By questionAndAnswers = By.xpath("");
     public static final By availableOffers = By.xpath("");
+    public static final By enterPincodeField = By.xpath("//input[@id='pincodeInputId']");
 
     //TO BE DONE
 
-    public static final By BuyNowButto3n = By.xpath("");
+
     public static final By getProlductName = By.xpath("");
 
 }

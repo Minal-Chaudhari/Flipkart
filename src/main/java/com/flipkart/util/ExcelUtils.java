@@ -14,7 +14,7 @@ public class ExcelUtils {
     private Workbook workbook;
     private Sheet sheet;
 
-    //initialise constructor
+    //constructor
     public ExcelUtils(String filePath, String sheetName) {
         try {
             FileInputStream fis = new FileInputStream(filePath);
@@ -29,7 +29,7 @@ public class ExcelUtils {
         }
     }
 
-    //get cell data
+    //method will get cell data
     public String getCellData(int rowNum, int colNum) {
         Row row = sheet.getRow(rowNum);
         if (row == null) {
@@ -42,12 +42,17 @@ public class ExcelUtils {
         return cell.toString();
     }
 
-    //get number of rows
+    //method will get row count
     public int getRowCount() {
-        return sheet.getLastRowNum() + 1; // Because rows are 0-indexed
+        return sheet.getLastRowNum() + 1; // because rows are 0-indexed
     }
 
-    //close workbook
+    //method will get the sheet
+    public Sheet getSheet() {
+        return sheet;
+    }
+
+    //method will close workbook
     public void closeWorkbook() {
         try {
             workbook.close();

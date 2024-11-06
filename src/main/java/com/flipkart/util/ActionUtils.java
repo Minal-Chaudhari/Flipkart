@@ -266,11 +266,6 @@ public class ActionUtils {
      return element.isEnabled();
     }
 
-    //method to clear search field
-    public void clearSearchField(){
-        WebElement element = driver.findElement(HomePageLocators.searchButton);
-        element.clear();
-    }
 
 
 }
