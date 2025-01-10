@@ -7,7 +7,10 @@ import com.flipkart.pages.loginPage.LoginPageLocators;
 import com.flipkart.util.Constants;
 import org.apache.logging.log4j.core.Logger;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
+
+import static org.openqa.selenium.devtools.v126.page.Page.captureScreenshot;
 
 //@Test(groups = {"AllLoginPageTests"}) //this will add the group on class level
 public class LoginPageTests extends BaseClass {
@@ -23,7 +26,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Login Page is Initialised");
     }
 
-    @Test(priority = 1,description = "LGN_001: Validate the login button presence")
+    @Test(priority = 1,description = "LGN_001: Validate the login button presence", groups = {"smoke","regression","sanity","allTestSuite"})
     public void verifyLoginButtonIsDisplayed() {
 
         logger.info("Test Start: LGN_001: Validate the login button presence");
@@ -34,7 +37,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test End: LGN_001: Validate the login button presence");
     }
 
-    @Test(priority = 1,description = "LGN_002: Verify the presence of the email/mobile number field")
+    @Test(priority = 1,description = "LGN_002: Verify the presence of the email/mobile number field", groups = {"sanity","allTestSuite"})
     public void verifyPresenceOfEmailIdAndMobileNoField(){
 
         logger.info("Test Start: LGN_002: Verify the presence of the email/mobile number field");
@@ -43,7 +46,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test End: LGN_002: Verify the presence of the email/mobile number field");
     }
 
-    @Test(priority = 3,description = "LGN_006: Validate terms of use link is clickable")
+    @Test(priority = 3,description = "LGN_006: Validate terms of use link is clickable", groups = {"regression","allTestSuite"})
     public void verifyTermsLinkIsClickable(){
 
         logger.info("Test Start: LGN_006: Validate terms of use link is clickable");
@@ -54,7 +57,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test End: LGN_006: Validate terms of use link is clickable");
     }
 
-    @Test(priority = 3,description = "LGN_011: Validate privacy policy link is clickable")
+    @Test(priority = 3,description = "LGN_011: Validate privacy policy link is clickable", groups = {"regression","allTestSuite"})
     public void verifyPrivacyLinkIsClickable(){
 
         logger.info("Test Start: LGN_011: Validate privacy policy link is clickable");
@@ -65,7 +68,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test End: LGN_011: Validate privacy policy link is clickable");
     }
 
-    @Test(priority = 3,description = "LGN_004: Validate 'Create Account' link  is clickable")
+    @Test(priority = 3,description = "LGN_004: Validate 'Create Account' link  is clickable", groups = {"regression","allTestSuite"})
     public void verifyCreateAccountLinkIsClickable(){
 
         logger.info("Test Start: LGN_004: Validate 'Create Account' link  is clickable");
@@ -76,7 +79,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test End: LGN_004: Validate 'Create Account' link  is clickable");
     }
 
-    @Test(priority = 3,description = "LGN_007: Verify redirection to 'Terms of Use' page")
+    @Test(priority = 3,description = "LGN_007: Verify redirection to 'Terms of Use' page", groups = {"regression","allTestSuite"})
     public void verifyTermsRedirection() {
 
         logger.info("Test Start: LGN_007: Verify redirection to 'Terms of Use' page");
@@ -94,7 +97,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test End: LGN_007: Verify redirection to 'Terms of Use' page");
     }
 
-    @Test(priority = 3,description = "LGN_012: Verify redirection to 'Privacy Policy' page")
+    @Test(priority = 3,description = "LGN_012: Verify redirection to 'Privacy Policy' page", groups = {"regression","sanity","allTestSuite"})
     public void verifyPrivacyRedirection(){
 
         logger.info("Test Start: LGN_012: Verify redirection to 'Privacy Policy' page");
@@ -113,7 +116,7 @@ public class LoginPageTests extends BaseClass {
 
     //=============login with data testcases==================================
 
-    @Test(priority = 2,description = "LGN_008: Validate error message for invalid mobile number input", groups = {"sanity"})
+    @Test(priority = 2,description = "LGN_008: Validate error message for invalid mobile number input", groups = {"sanity","allTestSuite"})
     public void verifyInvalidMobileNo() {
 
         logger.info("Test Start: LGN_008: Validate error message for invalid mobile number input");
@@ -128,7 +131,7 @@ public class LoginPageTests extends BaseClass {
         logger.info("Test End: LGN_008: Validate error message for invalid mobile number input");
     }
 
-    @Test(priority = 2,description = "LGN_009: Validate error message for invalid email ID input",groups = "sanity")
+    @Test(priority = 2,description = "LGN_009: Validate error message for invalid email ID input",groups = {"sanity","allTestSuite"})
     public void verifyInvalidEmailID() {
 
         logger.info("Test Start: LGN_009: Validate error message for invalid email ID input");
@@ -146,7 +149,7 @@ public class LoginPageTests extends BaseClass {
 
     //==========new user account testcases =========================================
 
-    @Test(priority = 3,description = "LGN_005: Verify redirection to 'Create Account' page")
+    @Test(priority = 3,description = "LGN_005: Verify redirection to 'Create Account' page", groups = {"smoke","regression","sanity","allTestSuite"})
     public void verifyCreateAccountLinkRedirection(){
 
         logger.info("Test Start: LGN_005: Verify redirection to 'Create Account' page");
@@ -211,7 +214,7 @@ public class LoginPageTests extends BaseClass {
     }
 
     //test will check if the set cookies are working
-    @Test(priority = 4, description = "LGN_014: Validate login using cookies")
+    @Test(priority = 4, description = "LGN_014: Validate login using cookies",groups = {"smoke","regression","sanity","allTestSuite"})
     public void verifyLoginWithCookies() {
     /*
     Load cookies

@@ -20,7 +20,7 @@ public class Constants {
     public static final String expectedPrivacyUrl = "https://www.flipkart.com/pages/privacypolicy";
     public static final String expectedCreateAccountUrl = "https://www.flipkart.com/account/login?signup=true";
     public static final String termsPageTitle = "Terms Store Online";
-    public static final String privacyPageTitle = "Privacypolicy Store Online";
+    public static final String privacyPageTitle = "ASDPrivacypolicy Store Online";//changed
     public static final String createAccountPageLoginText = "Looks like you're new here!";
     public static final String createAccountPageText = "Sign up with your mobile number to get started";
     public static final String invalidMobileNumberError = "Please enter valid Email ID/Mobile number";

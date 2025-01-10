@@ -16,12 +16,13 @@ public class TestData {
     //testdata file name
     static String filePath = System.getProperty("user.dir")+"\\testData\\SearchTestData.xlsx";
 
-    //sheet = 'fetchFirstProductAddToCart' --> this sheet has testdata for searching
+    //sheet = 'fetchFirstProductAddToCart' --> this sheet has testdata for searching (Buy Now)
     @DataProvider(name = "fetchFirstProductBuyNow")
     public static Object[][] fetchFirstProductBuyNow() {
         return readProductDataFromExcel("fetchFirstProductBuyNow");
     }
 
+    //add to cart first products (try using same data for both add to cart and buy now)
     @DataProvider(name = "fetchFirstProductAddToCart")
     public static Object[][] fetchFirstProductAddToCart() {
         return readProductDataFromExcel("fetchFirstProductAddToCart");

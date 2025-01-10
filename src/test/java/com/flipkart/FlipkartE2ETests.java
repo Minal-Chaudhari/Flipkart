@@ -45,7 +45,7 @@ public class FlipkartE2ETests extends BaseClass {
         logger.info("Before class setup complete");
     }
 
-    @Test(priority = 1, description = "ETE_001: Validate that when users search for product, user should be able to buy the first product displayed using 'Buy Now'",dataProvider = "fetchFirstProductBuyNow", dataProviderClass = TestData.class)
+    @Test(priority = 1, description = "ETE_001: Validate that when users search for product, user should be able to buy the first product displayed using 'Buy Now'",dataProvider = "fetchFirstProductBuyNow", dataProviderClass = TestData.class, groups = {"smoke","regression","sanity","allTestSuite"})
     public void verifyBuyNowE2EPurchaseFlowForFirstProductDisplayed(Map<String, String> productData) {
 
         logger.info("Test Start: ETE_001: Validate that when users search for product, user should be able to buy the first product displayed using 'Buy Now'");
