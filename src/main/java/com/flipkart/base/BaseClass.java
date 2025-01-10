@@ -1,5 +1,6 @@
 package com.flipkart.base;
 
+import com.aventstack.extentreports.Status;
 import com.flipkart.util.ActionUtils;
 import com.flipkart.util.Constants;
 import org.apache.logging.log4j.LogManager;
@@ -15,10 +16,12 @@ import org.openqa.selenium.WebDriver;
 //0-89import org.apache.logging.log4j.core.Logger;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -54,9 +57,6 @@ public class BaseClass {
         action = new ActionUtils(driver);
     }
 
-
-
-/*
     @AfterClass(groups = {"sanity","smoke","regression","allTestSuite"})
     public void tearDown() {
         if (driver != null) {
@@ -64,11 +64,6 @@ public class BaseClass {
             logger.info("Driver tear down complete ...");
         }
     }
-
- */
-
-
-
 
     //here screenshot method is present
     public String captureScreen(String tname) throws IOException {
@@ -86,6 +81,9 @@ public class BaseClass {
         return targetFilePath;
 
     }
+
+
+
 
     //static block for timestamp
     static {

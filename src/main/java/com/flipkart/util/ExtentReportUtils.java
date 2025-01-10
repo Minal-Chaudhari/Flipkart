@@ -5,10 +5,14 @@ import java.io.File;
 import java.io.IOException;
 import com.flipkart.base.BaseClass;
 
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -26,6 +30,19 @@ public class ExtentReportUtils implements ITestListener {
     public ExtentTest test;
 
     String repName;
+
+    /*
+    public ExtentReportUtils(BaseClass baseClass) {
+        this.baseClass = baseClass;
+    }
+
+
+
+    public ExtentReportUtils(WebDriver driver) {
+        this.driver = driver;
+    }
+
+     */
 
     public void onStart(ITestContext testContext) {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());// time stamp
@@ -66,18 +83,19 @@ public class ExtentReportUtils implements ITestListener {
         test = extent.createTest(result.getTestClass().getName());
         test.assignCategory(result.getMethod().getGroups());
 
-        String description = result.getMethod().getDescription();
-        test.log(Status.FAIL, description + " got failed");
+        test.log(Status.FAIL,result.getName()+" got failed");
         test.log(Status.INFO, result.getThrowable().getMessage());
 
+        String imgPath = null;
         try {
-            String imgPath = new BaseClass().captureScreen(result.getName());
-            test.addScreenCaptureFromPath(imgPath);
-
-        } catch (IOException e1) {
-            e1.printStackTrace();
+            imgPath = new BaseClass().captureScreen(result.getName());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        test.addScreenCaptureFromPath(imgPath);
+
     }
+
 
     public void onTestSkipped(ITestResult result) {
         test = extent.createTest(result.getTestClass().getName());
@@ -99,4 +117,6 @@ public class ExtentReportUtils implements ITestListener {
             e.printStackTrace();
         }
     }
+
+
 }

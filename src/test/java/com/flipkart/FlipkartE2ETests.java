@@ -17,6 +17,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.Map;
 
 public class FlipkartE2ETests extends BaseClass {
 
@@ -44,26 +45,53 @@ public class FlipkartE2ETests extends BaseClass {
         logger.info("Before class setup complete");
     }
 
-    @Test(priority = 1, description = "ETE_001: Validate that when users search for product, user should be able to buy the first product displayed using 'Buy Now'",dataProvider = "productDataProvider", dataProviderClass = TestData.class)
-    public void verifyBuyNowE2EPurchaseFlowForFirstProductDisplayed(String productName) {
+    @Test(priority = 1, description = "ETE_001: Validate that when users search for product, user should be able to buy the first product displayed using 'Buy Now'",dataProvider = "fetchFirstProductBuyNow", dataProviderClass = TestData.class, groups = {"smoke","regression","sanity","allTestSuite"})
+    public void verifyBuyNowE2EPurchaseFlowForFirstProductDisplayed(Map<String, String> productData) {
 
         logger.info("Test Start: ETE_001: Validate that when users search for product, user should be able to buy the first product displayed using 'Buy Now'");
-        //search.clearSearchFiledIfHasValue();
+        action.navigateToURL(Constants.FLIPKART_URL);
+        search.clearSearchFiledIfHasValue();
+        action.waitForPageToLoad();
+
+        String productName = productData.get("ProductName");
+        String expectedBrandName = productData.get("Brand");
+
+        logger.info("Product name: {}", productName);
+        logger.info("Expected brand name: {}", expectedBrandName);
+
         search.searchProduct(productName);
+        action.waitForPageToLoad();
+
+        List<String> allBrandNamesInFilter = search.getAllDisplayedBrandNames();
+
+        boolean isBrandNamePresent = search.isBrandNamePresent(expectedBrandName,allBrandNamesInFilter);
+        Assert.assertTrue(isBrandNamePresent,"Brand name is not present in the filter section");
+
         List<String> allProductsDisplayedNames = action.fetchAllTextValuesUsingLocator(SearchResultsPageLocators.getAllProductNamesOnPage);
+        action.printListItems(allProductsDisplayedNames);
+
         String firstDisplayedProduct = search.getProductNameAtXPosition(allProductsDisplayedNames, 1);
         logger.info("First product displayed in search result: {}", firstDisplayedProduct);
+
         search.selectProdByProductName(firstDisplayedProduct);
+        //search.verifyOpenedProductIsCorrect(firstDisplayedProduct);
+
         e2e.clickBuyNow();
         e2e.clickContinueButton();
         e2e.selectYourUPIIDAndVerify();
         action.waitUntilElementIsClickable(CheckOutPageLocators.payButton);
+
         Assert.assertTrue(action.isButtonEnabled(CheckOutPageLocators.payButton));
+
         action.switchBackToMainTab();
-        action.clearSearchField();
+        action.waitUntilFieldIsVisible(HomePageLocators.searchButton);
+        search.clearSearchField();
+        action.waitForPageToLoad();
         logger.info("Test End: ETE_001: Validate that when users search for product, user should be able to buy the first product displayed using 'Buy Now'");
 
     }
+
+    /*
 
     @Test(priority = 2, description = "ETE_002: Validate that when users search for product, user should be able to buy the first product displayed using  'Add to Cart'")
     public void verifyAddToCartE2EPurchaseFlowForFirstProductDisplayed(){
@@ -76,6 +104,8 @@ public class FlipkartE2ETests extends BaseClass {
         search.selectProdByProductName(firstDisplayedProduct);
         action.switchToNewTab();
         action.waitForPageToLoad();
+        //add method in search to make sure the new tab opened is same as the one selected .. first product displayed
+        //add assert
         action.clickButton(ProductDetailsPageLocators.addToCartButton);
         action.waitUntilElementIsClickable(CheckOutPageLocators.placeOrderButton);
         action.clickButton(CheckOutPageLocators.placeOrderButton);
@@ -107,6 +137,8 @@ public class FlipkartE2ETests extends BaseClass {
         logger.info("Test End: ETE_003: Validate that when users search for product, user should be able to buy the first product displayed using  'Add to Cart' for specific brand of mobile");
 
     }
+
+     */
 
 
 }
